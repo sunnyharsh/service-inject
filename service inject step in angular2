@@ -1,0 +1,35 @@
+1st step:----create a service file with in seprate folder 
+
+import {Injectable} from '@angualar/core';
+import {Http} from '@angualar/http';
+import 'rxjs/add/operator/map';
+ 
+@Injectable()
+export class PostService{
+	cnstructor(private http:Http){
+		console.log("post service is intilized")	
+	}
+}
+2nd step:------ go to component where we want to use
+import {PostService} from '../service/full path of service';
+@Component({
+	providers:[PostService];
+
+})
+3rd step:-------  than go app.module.ts
+import {HttpModule} from '@angular/http';
+@ngModule({
+	imports:[Httpmodules]
+})
+
+
+in these steps we done basic things
+
+now go to service file again and call a api and what ever you want to perform
+getpost(){
+return this.http.get(url).map(res=>res.json());
+}
+
+now go component where we want to use this service
+constructor(provide postService:PostService){
+}
